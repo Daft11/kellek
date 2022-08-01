@@ -9,6 +9,8 @@
 
 }
 
+div[hidden]{ display: none!important; }
+
 .app-header {
   display: flex;
   flex: 0 0 var(--header-hight);

@@ -1,11 +1,20 @@
 {
     "category": {
         "kellek": {
-          "displayName": "Келлек",
+          "displayName": "Келлек-чан",
           "idKey": "K",
           "availableColors": ["graphite", "choco"],
           "availableSizes": ["small", "medium", "large"],
-          "availableTypes": ["standart", "premium", "commerce"]
+          "availableTypes": ["standart", "premium", "commerce"],
+          "groupType": "size"
+        },
+        "bath": {
+          "displayName": "Келлек-ванна",
+          "idKey": "K",
+          "availableColors": ["graphite"],
+          "availableSizes": ["small", "medium"],
+          "availableTypes": ["bath"],
+          "groupType": "type"
         }
     },
     "sizes": {
@@ -40,6 +49,14 @@
                 "displayName": "вместимость",
                 "value": "7-10 человек"
             }
+        },
+        "commerce": {
+            "displayName": "для коммерции",
+            "idKey": "S",
+            "additionalInfo": {
+                "displayName": "вместимость",
+                "value": "4-6 человек"
+            }
         }
     },
     "types": {
@@ -50,6 +67,10 @@
         "premium": {
             "displayName": "премиум",
             "idKey": "014"
+        },
+        "bath": {
+            "displayName": "флагманы",
+            "idKey": "074"
         },
         "commerce": {
             "displayName": "коммерция",

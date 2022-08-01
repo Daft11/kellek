@@ -4,10 +4,11 @@ import expandIcon from '@assets/expand-btn.svg';
 import closeIcon from '@assets/expand-close-btn.svg';
 import '@google/model-viewer';
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useProductsService } from "../../services/products.service";
+import { GroupedProduct, useProductsService } from "../../services/products.service";
 import MediaQuery, { useMediaQuery } from "react-responsive";
 import { useObservable } from "../../services/observable/useObservable";
 import {ModelViewerMagicQuick as ModelViewer} from "./modelViewer";
+import { GroupParamType, ProductPropsType } from "../../types/types";
 
 function useQuery() {
     const { search } = useLocation();
@@ -22,22 +23,32 @@ const ProductComponent = function () {
     const id = useQuery().get('id') || '';
     const currentType = useQuery().get('type');
     const currentColor = useQuery().get('color');
+    const currentSize = useQuery().get('size');
 
     const isMobile = useMediaQuery({
         query: '(hover: none) and (pointer: coarse)'
     })
     
-    const product = service.setCurrentProduct(id);
+    const product = service.setCurrentProduct(id) as GroupedProduct;
     const isViewboxExpanded = useObservable(service.isViewboxExpanded)
 
     const setViewboxExpanded = (value) => {
         service.isViewboxExpanded.set(value)
     }
 
+    const groupType = product?.groupType
+
+    const currentProductProps: ProductPropsType = {
+        category: product?.category || '',
+        color: currentColor || '',
+        size: currentSize || '',
+        type: currentType || ''
+    }
+
     return (
         <div className="product-wrapper">
             <div className={"product-3d-wrapper " + (isViewboxExpanded ? "expanded" : "")}>
-                <ModelViewer productId={product?.getMagicQuickModelId(currentType, currentColor)}></ModelViewer>
+                <ModelViewer productId={product?.getMagicQuickModelId(currentProductProps)}></ModelViewer>
                 <button className={"product-3d-expand-btn " + (isViewboxExpanded ? "top" : "bottom")} onClick={() => setViewboxExpanded(!isViewboxExpanded)}>
                     {
                         isViewboxExpanded 
@@ -51,16 +62,25 @@ const ProductComponent = function () {
                     {
                         isMobile
                         ? <div className="product-info-mobile">
-                            <ProductNameInfoComponent product={product}/>
+                            <ProductNameInfoComponent product={product} currSize={currentProductProps.size}/>
                           </div>
-                        : <ProductNameInfoComponent product={product}/>
+                        : <ProductNameInfoComponent product={product} currSize={currentProductProps.size}/>
                     }
-                    <div className="product-types">
+                    <div className="product-types" hidden={groupType === GroupParamType.type}>
                         {product?.availableTypes.map((type, i) => 
                             <button className={"btn type-btn " + (currentType === type.idKey ? "active" : "")}
                                     key={i}
-                                    onClick={() => navigate(`/product?id=${product?.id}&color=${currentColor}&type=${type.idKey}`)}>
+                                    onClick={() => navigate(`/product?id=${product?.id}&color=${currentColor}&type=${type.idKey}&size=${currentSize}`)}>
                                         {type.displayName}
+                            </button>
+                        )}
+                    </div>
+                    <div className="product-sizes" hidden={groupType === GroupParamType.size}>
+                        {product?.availableSizes.map((size, i) => 
+                            <button className={"btn type-btn " + (currentSize === size.idKey ? "active" : "")}
+                                    key={i}
+                                    onClick={() => navigate(`/product?id=${product?.id}&color=${currentColor}&type=${currentType}&size=${size.idKey}`)}>
+                                        {size.displayName}
                             </button>
                         )}
                     </div>
@@ -81,16 +101,16 @@ const ProductComponent = function () {
     )
 }
 
-const ProductNameInfoComponent = function ({product}) {
+const ProductNameInfoComponent = function ({product, currSize}: {product: GroupedProduct, currSize: string}) {
     return (
         <Fragment>
             <div className="product-name-wrapper">
-                <p className="product-groupname">{product.groupName}</p>
-                <p className="product-productname">{product.productName}</p>
+                <p className="product-groupname">{product.categoryName}</p>
+                <p className="product-productname">{product.groupName}</p>
             </div>
             <div className="product-info-wrapper">
-                <p className="product-info-name">{product.additionalInfo.displayName}</p>
-                <p className="product-info-value">{product.additionalInfo.value}</p>
+                <p className="product-info-name">{product.getSizeAdditionalInfo(currSize).displayName}</p>
+                <p className="product-info-value">{product.getSizeAdditionalInfo(currSize).value}</p>
             </div>
         </Fragment>
     )

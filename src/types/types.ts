@@ -1,10 +1,11 @@
-export interface ProductType {
-    id: string
-    groupName: string
-    productName: string
-    availableColors: ProductProp[]
-    availableTypes: ProductProp[]
-    additionalInfo: ProductAddInfo
+export interface ProductType extends ProductPropsType{
+    id: string;
+}
+export interface ProductPropsType {
+    category: string;
+    size: string;
+    type: string;
+    color: string;
 }
 
 export interface ProductProp {
@@ -15,8 +16,17 @@ export interface ProductProp {
 export interface ProductColorProp extends ProductProp {
     color: string
 }
+export interface ProductSizeProp extends ProductProp {
+    additionalInfo: ProductAddInfo
+}
 
 export interface ProductAddInfo {
     displayName: string
     value: string
+}
+
+export enum GroupParamType {
+    size = 'size',
+    type = 'type',
+    // color = 'color',
 }

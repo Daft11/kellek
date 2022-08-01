@@ -55,6 +55,34 @@
             "size": "large",
             "type": "premium",
             "color": "choco"
+        },
+        {
+            "id": "K034S1",
+            "category": "kellek",
+            "size": "commerce",
+            "type": "commerce",
+            "color": "graphite"
+        },
+        {
+            "id": "K034S2",
+            "category": "kellek",
+            "size": "commerce",
+            "type": "commerce",
+            "color": "choco"
+        },
+        {
+            "id": "K074S1",
+            "category": "bath",
+            "size": "small",
+            "type": "bath",
+            "color": "graphite"
+        },
+        {
+            "id": "K074M1",
+            "category": "bath",
+            "size": "medium",
+            "type": "bath",
+            "color": "graphite"
         }
     ]
 }
