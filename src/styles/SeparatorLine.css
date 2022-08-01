@@ -1,0 +1,7 @@
+.separator {
+    display: block;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: #B3B0AB;
+}

@@ -1,0 +1,63 @@
+@font-face {
+  font-family: 'Circe-Regular';
+  src: url('../assets/fonts/circe/Circe-Regular.ttf') format('truetype');
+} 
+
+:root {
+  font-size: 16px;
+  --header-hight: 90px;
+  --text-color: #B3B0AB;
+  --text-color-contrast: #FFFFFF;
+  --accent-color: #21C7D5;
+  --main-color: #563F3B;
+}
+
+@media only screen and (hover: none) and (pointer: coarse) {
+  :root {
+    font-size: 14px;
+    --header-hight: 60px;
+  }
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Circe-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color)
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  border: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+div, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

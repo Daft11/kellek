@@ -1,0 +1,60 @@
+{
+    "products": [
+        {
+            "id": "K024S1",
+            "category": "kellek",
+            "size": "small",
+            "type": "standart",
+            "color": "graphite"
+        },
+        {
+            "id": "K024S2",
+            "category": "kellek",
+            "size": "small",
+            "type": "standart",
+            "color": "choco"
+        },
+        {
+            "id": "K024M1",
+            "category": "kellek",
+            "size": "medium",
+            "type": "standart",
+            "color": "graphite"
+        },
+        {
+            "id": "K024M2",
+            "category": "kellek",
+            "size": "medium",
+            "type": "standart",
+            "color": "choco"
+        },
+        {
+            "id": "K014M1",
+            "category": "kellek",
+            "size": "medium",
+            "type": "premium",
+            "color": "graphite"
+        },
+        {
+            "id": "K014M2",
+            "category": "kellek",
+            "size": "medium",
+            "type": "premium",
+            "color": "choco"
+        },
+        {
+            "id": "K014L1",
+            "category": "kellek",
+            "size": "large",
+            "type": "premium",
+            "color": "graphite"
+        },
+        {
+            "id": "K014L2",
+            "category": "kellek",
+            "size": "large",
+            "type": "premium",
+            "color": "choco"
+        }
+    ]
+}

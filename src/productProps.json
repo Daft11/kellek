@@ -1,0 +1,71 @@
+{
+    "category": {
+        "kellek": {
+          "displayName": "Келлек",
+          "idKey": "K",
+          "availableColors": ["graphite", "choco"],
+          "availableSizes": ["small", "medium", "large"],
+          "availableTypes": ["standart", "premium", "commerce"]
+        }
+    },
+    "sizes": {
+        "default": {
+            "displayName": "",
+            "idKey": "S",
+            "additionalInfo": {
+                "displayName": "",
+                "value": ""
+            }
+        },
+        "small": {
+            "displayName": "малый",
+            "idKey": "S",
+            "additionalInfo": {
+                "displayName": "вместимость",
+                "value": "2-4 человека"
+            }
+        },
+        "medium": {
+            "displayName": "средний",
+            "idKey": "M",
+            "additionalInfo": {
+                "displayName": "вместимость",
+                "value": "4-6 человек"
+            }
+        },
+        "large": {
+            "displayName": "большой",
+            "idKey": "L",
+            "additionalInfo": {
+                "displayName": "вместимость",
+                "value": "7-10 человек"
+            }
+        }
+    },
+    "types": {
+        "standart": {
+            "displayName": "стандарт",
+            "idKey": "024"
+        },
+        "premium": {
+            "displayName": "премиум",
+            "idKey": "014"
+        },
+        "commerce": {
+            "displayName": "коммерция",
+            "idKey": "034"
+        }
+    },
+    "colors": {
+        "graphite": {
+            "displayName": "графит",
+            "idKey": "1",
+            "color": "#C4C4C4"
+        },
+        "choco": {
+            "displayName": "шоколад",
+            "idKey": "2",
+            "color": "#863C06"
+        }
+    }
+}
