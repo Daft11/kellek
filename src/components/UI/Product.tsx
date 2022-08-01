@@ -86,7 +86,9 @@ const ProductComponent = function () {
                     </div>
                     <div className="product-colors">
                         {product?.availableColors.map((color, i) => 
-                        <button className="btn color-btn" key={i} onClick={() => navigate(`/product?id=${product?.id}&color=${color.idKey}&type=${currentType}`)}>
+                        <button className="btn color-btn"
+                                key={i}
+                                onClick={() => navigate(`/product?id=${product?.id}&color=${color.idKey}&type=${currentType}&size=${currentSize}`)}>
                             <p className={"color-example " + (currentColor === color.idKey ? "active" : "")}
                                   style={{backgroundColor: color.color}}></p>
                             <p className={"color-name " + (currentColor === color.idKey ? "active" : "")}>{color.displayName}</p>
