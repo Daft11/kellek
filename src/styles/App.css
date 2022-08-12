@@ -31,11 +31,21 @@ div[hidden]{ display: none!important; }
   padding-top: 10px;
   margin: auto;
   user-select: none;
+  z-index: 100;
 }
 
 .header-logo-link > img{
   height: 100%;
   z-index: 100;
+  transition: .4s ease-in-out;
+}
+
+.dark-logo {
+  filter: var(--filter-kellek-dark-color)
+}
+
+.light-logo {
+  filter: var(--filter-kellek-light-color)
 }
 
 .content-wrapper {

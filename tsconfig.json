@@ -15,6 +15,15 @@
     "strictNullChecks": true,                         /* When type checking, take into account `null` and `undefined`. */
     "noImplicitThis": true,                           /* Enable error reporting when `this` is given the type `any`. */
     "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
+    "baseUrl": "./src",
+    "paths": {
+      "@assets": ["assets"],
+      "@assets/*": ["assets/*"],
+      "@styles": ["styles"],
+      "@styles/*": ["styles/*"],
+      "@types": ["types"],
+      "@types/*": ["types/*"],
+    },
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },

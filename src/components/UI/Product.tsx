@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef } from "react";
 import '@styles/Product.css'
 import expandIcon from '@assets/expand-btn.svg';
 import closeIcon from '@assets/expand-close-btn.svg';
@@ -25,14 +25,35 @@ const ProductComponent = function () {
     const currentColor = useQuery().get('color');
     const currentSize = useQuery().get('size');
 
+
     const isMobile = useMediaQuery({
         query: '(hover: none) and (pointer: coarse)'
     })
     
     const product = service.setCurrentProduct(id) as GroupedProduct;
     const isViewboxExpanded = useObservable(service.isViewboxExpanded)
+    const modelViewerRef = useRef<HTMLHeadingElement>(null);
 
     const setViewboxExpanded = (value) => {
+        const height = modelViewerRef.current?.scrollHeight || 0
+        const width = modelViewerRef.current?.scrollWidth || 0
+        const offsetLeft = modelViewerRef.current?.offsetLeft
+        const offsetTop = modelViewerRef.current?.offsetTop
+        modelViewerRef.current?.style.setProperty("height", value ? height+ "px" : '100%');
+        modelViewerRef.current?.style.setProperty("width", value ? width + "px" : '100%');
+        modelViewerRef.current?.style.setProperty("position", value ? "absolute" : "relative");
+        modelViewerRef.current?.style.setProperty("left", offsetLeft + "px");
+        modelViewerRef.current?.style.setProperty("top", offsetTop + "px");
+        modelViewerRef.current?.style.removeProperty("height");
+        modelViewerRef.current?.style.removeProperty("width");
+        modelViewerRef.current?.style.removeProperty("left");
+        modelViewerRef.current?.style.removeProperty("top");
+        // setTimeout(() => {
+        // }, 1)
+        // modelViewerRef.current?.style.setProperty("transform", "translate(-50%, -50%)");
+        
+        // modelViewerRef.current?.style.setProperty("left", 0 + "px");
+        // modelViewerRef.current?.style.setProperty("top", 0 + "px");
         service.isViewboxExpanded.set(value)
     }
 
@@ -47,8 +68,8 @@ const ProductComponent = function () {
 
     return (
         <div className="product-wrapper">
-            <div className={"product-3d-wrapper " + (isViewboxExpanded ? "expanded" : "")}>
-                <ModelViewer productId={product?.getMagicQuickModelId(currentProductProps)}></ModelViewer>
+            <div className={"product-3d-wrapper " + (isViewboxExpanded ? "fullscreen" : "")} ref={modelViewerRef}>
+                <ModelViewer productId={product?.getMagicQuickModelId(currentProductProps)} className={"modelViewer"}></ModelViewer>
                 <button className={"product-3d-expand-btn " + (isViewboxExpanded ? "top" : "bottom")} onClick={() => setViewboxExpanded(!isViewboxExpanded)}>
                     {
                         isViewboxExpanded 
@@ -57,7 +78,7 @@ const ProductComponent = function () {
                     }
                 </button>
             </div>
-            <div className={"product-sidebar " + (isViewboxExpanded ? "expanded" : "")}>
+            <div className={"product-sidebar " + (isViewboxExpanded ? "" : "")}>
                 <div className="product-sidebar-top">
                     {
                         isMobile
@@ -96,7 +117,7 @@ const ProductComponent = function () {
                     </div>
                 </div>
                 <Link to="/gallery" className="backtogallery-btn">
-                    Смотреть все<MediaQuery minWidth={600}><br/></MediaQuery>продукты KELLEK
+                    Смотреть все{isMobile ? ' ' : <br/>}продукты KELLEK
                 </Link>
             </div>
         </div>

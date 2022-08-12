@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import logoLight from '@assets/logo-kellek-light.svg';
-import logoLDark from '@assets/logo-kellek-dark.svg';
+import logo from '@assets/logo-kellek.svg';
 import logoMini from '@assets/logo-kellek-light-mini.svg';
 import SeparatorLine from './components/UI/SeparatorLine';
 import Gallery from './components/UI/Gallery';
 import '@styles/App.css';
-import { Product, useProductsService } from './services/products.service';
+import { useProductsService } from './services/products.service';
 import ProductComponent from './components/UI/Product';
 import { useObservable } from './services/observable/useObservable';
 import { useMediaQuery } from 'react-responsive';
@@ -24,7 +23,7 @@ function App() {
     <div className="app">
       <header className={"app-header " + (isProductSelected && isMobile ? 'white' : '')}>
         <a className='header-logo-link' href='/'>
-          <img alt='Kellek home page' src={isProductSelected && isMobile ? logoLDark : logoLight}></img>
+          <img alt='Kellek home page' src={logo} className={isViewboxExpanded && !isMobile || isProductSelected && isMobile ? 'dark-logo': 'light-logo'}></img>
         </a>
         {isProductSelected && isMobile ? null : <SeparatorLine/>}
       </header>

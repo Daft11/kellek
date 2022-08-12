@@ -34,7 +34,7 @@ async function addScript(src: string, integrity?: string, crossOrigin?: string) 
 const getScript = addScript(jq3_4_1ScriptParams.src, jq3_4_1ScriptParams.integrity, jq3_4_1ScriptParams.crossOrigin)
     .then(() => addScript(magicQuickModelViewerScriptParams.src))
 
-const ModelViewerMagicQuick = ({productId}) => {
+const ModelViewerMagicQuick = ({productId, className}) => {
 
   useEffect(() => {
     getScript.then(() => loadModel(productId))
@@ -46,7 +46,7 @@ const ModelViewerMagicQuick = ({productId}) => {
             scrolling="no"
             frameBorder="0"
             title="modelViewerIframe"
-            style={{height: '100%', width: '100%'}}></iframe>
+            className={className}></iframe>
   )
 }
 

@@ -10,6 +10,8 @@
   --text-color-contrast: #FFFFFF;
   --accent-color: #21C7D5;
   --main-color: #563F3B;
+  --filter-kellek-light-color: invert(76%) sepia(8%) saturate(156%) hue-rotate(359deg) brightness(92%) contrast(92%);
+  --filter-kellek-dark-color: invert(26%) sepia(12%) saturate(1098%) hue-rotate(321deg) brightness(86%) contrast(86%);
 }
 
 @media only screen and (hover: none) and (pointer: coarse) {
