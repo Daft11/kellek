@@ -5,7 +5,7 @@ import { GroupedProduct } from "../../services/products.service";
 
 const GalleryItem = function (item: GroupedProduct) {
 
-    const image = require(`../../assets/products/${item.id}/image.png`);
+    const image = require(`../../assets/products/${item.id}/image.webp`);
 
     return (
         <Link className="gallery-item" to={`/product?id=${item.id}&color=${item.availableColors[0].idKey}&type=${item.availableTypes[0].idKey}&size=${item.availableSizes[0].idKey}`}>
