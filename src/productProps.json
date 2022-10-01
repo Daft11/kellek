@@ -5,7 +5,7 @@
           "idKey": "K",
           "availableColors": ["graphite", "choco"],
           "availableSizes": ["small", "medium", "large"],
-          "availableTypes": ["standart", "premium", "commerce"],
+          "availableTypes": ["standart", "premium", "edelweiss", "commerce"],
           "groupType": "size"
         },
         "bath": {
@@ -63,6 +63,10 @@
         "standart": {
             "displayName": "стандарт",
             "idKey": "024"
+        },
+        "edelweiss": {
+            "displayName": "эдельвейс",
+            "idKey": "014E"
         },
         "premium": {
             "displayName": "премиум",

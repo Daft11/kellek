@@ -1,5 +1,5 @@
 import React from "react";
-import { GroupParamType, ProductAddInfo, ProductColorProp, ProductProp, ProductPropsType, ProductSizeProp, ProductType } from "../types/types";
+import { GroupParamType, ProductColorProp, ProductProp, ProductPropsType, ProductSizeProp, ProductType } from "../types/types";
 import { Observable } from "./observable/observable";
 import availableProducts from '../availableProducts.json'
 import productProps from '../productProps.json'
@@ -45,7 +45,8 @@ export class GroupedProduct {
         let idTailPart = ''
         switch (this.groupType) {
             case GroupParamType.size: {
-                idTailPart = type + productProps.sizes[this.groupParamValue].idKey + color
+                
+                idTailPart = type + (type.length > 3 ? '' : productProps.sizes[this.groupParamValue].idKey) + color
                 break;
             }
             case GroupParamType.type: {
@@ -70,7 +71,7 @@ export class GroupedProduct {
 
     addType = (id: string) => {
         const type: ProductProp = productProps.types[id]
-        if (this.availableTypes.find(({idKey})=>idKey===type.idKey)){
+        if (this.availableTypes.find(({idKey, displayName})=>idKey===type.idKey && displayName===type.displayName)){
             return
         }
         this.availableTypes.push(type)
