@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, HashRouter } from 'react-router-dom';
 
 import logo from '@assets/logo-kellek.svg';
 import logoMini from '@assets/logo-kellek-light-mini.svg';
@@ -28,13 +28,14 @@ function App() {
         {isProductSelected && isMobile ? null : <SeparatorLine/>}
       </header>
       <section className='content-wrapper'>
-        <BrowserRouter>
+        <></>
+        <HashRouter>
           <Routes>
             <Route path='/gallery' element={<Gallery />} />
             <Route path='/product' element={<ProductComponent />} />
             <Route path="*" element={<Navigate replace to="/gallery" />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </section>
       {
         isProductSelected && isMobile && isViewboxExpanded 
